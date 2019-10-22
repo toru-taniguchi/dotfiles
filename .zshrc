@@ -60,8 +60,21 @@ alias gv='git revert'
 
 ## rails# {{{
 alias be='bundle exec'
-alias rc='rails console'
-alias rs='rails server'
+alias bi='bundle install --path vendor/bundle'
+alias rubocop='be rubocop --safe-auto-correct'
+alias rc='be rails console'
+alias rs='be rails server'
+alias migrate='be rails db:migrate'
+alias seed='bin/fast_seed'
+alias envtest='RAILS_ENV=test'
+alias setup='bi && migrate && seed && envtest migrate && envtest seed'
+alias rsca='be rails server -b $CA_FQDN -p $CA_PORT'
+alias rsiv='be rails server -b $IV_FQDN -p $IV_PORT'
+alias rspa='be rails server -b $PA_FQDN -p $PA_PORT'
+alias rsmy='be rails server -b $MY_FQDN -p $MY_PORT'
+alias rsex='be rails server -b $EX_FQDN -p $EX_PORT'
+alias rsmfcp='be rails server -p $PARTNER_PORT'
+alias rsmid='setup && be rails server -b $CA_MID_HOST -p $CA_MID_PORT'
 # }}}
 
 # prompt
