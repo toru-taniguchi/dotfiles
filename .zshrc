@@ -77,6 +77,9 @@ alias rsmfcp='be rails server -p $PARTNER_PORT'
 alias rsmid='setup && be rails server -b $CA_MID_HOST -p $CA_MID_PORT'
 # }}}
 
+## Redis
+alias "redis"="redis-server /usr/local/etc/redis.conf"
+
 # prompt
 export GIT_PS1_SHOWCOLORHINTS=1
 git_prompt_sh=/usr/local/etc/bash_completion.d/git-prompt.sh
