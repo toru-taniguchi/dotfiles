@@ -15,6 +15,19 @@ export PKG_CONFIG_PATH="/usr/local/opt/mysql@5.7/lib/pkgconfig"
   export PATH=${HOME}/.rbenv/bin:${PATH} && \
   eval "$(rbenv init -)"
 
+## goenv
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+export GOENV_DISABLE_GOPATH=1
+eval "$(goenv init -)"
+
+## go
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
+
+# node
+export PATH="$HOME/.nodebrew/current/bin:$PATH"
+
 ## imagemagic
 export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
 
@@ -56,6 +69,7 @@ alias gco='git commit'
 alias grm='git remote'
 alias gs='git status'
 alias gv='git revert'
+alias gbclean="git branch --merged | grep -vE '^\*|master$|develop$|release$' | xargs -I % git branch -d %"
 # }}}
 
 ## rails# {{{
@@ -74,11 +88,15 @@ alias rspa='be rails server -b $PA_FQDN -p $PA_PORT'
 alias rsmy='be rails server -b $MY_FQDN -p $MY_PORT'
 alias rsex='be rails server -b $EX_FQDN -p $EX_PORT'
 alias rsmfcp='be rails server -p $PARTNER_PORT'
-alias rsmid='setup && be rails server -b $CA_MID_HOST -p $CA_MID_PORT'
+alias setuprsmid='setup && be rails server -b $CA_MID_HOST -p $CA_MID_PORT'
+alias rsmid='be rails server -b $CA_MID_HOST -p $CA_MID_PORT'
 # }}}
 
 ## Redis
 alias "redis"="redis-server /usr/local/etc/redis.conf"
+
+## sidekiq
+alias "sq"="bundle exec sidekiq -C config/sidekiq.yml"
 
 # prompt
 export GIT_PS1_SHOWCOLORHINTS=1
